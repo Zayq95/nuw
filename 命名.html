@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元旦快乐 - New Year's Day Wishes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <!-- 音乐控制按钮 -->
+    <div class="music-control">
+        <button id="musicBtn" class="music-btn">
+            <span class="music-icon">🎵</span>
+        </button>
+    </div>
+
+    <!-- 雪花容器 -->
+    <div id="snow-container"></div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 页面标题 -->
+        <header class="header">
+            <h1 class="title">🎉 元旦快乐 🎉</h1>
+            <p class="subtitle">Happy New Year</p>
+        </header>
+
+        <!-- 倒计时模块 -->
+        <div class="countdown">
+            <h2 class="countdown-title">距离新年还有</h2>
+            <div class="countdown-timer">
+                <div class="timer-item">
+                    <span id="days" class="timer-number">00</span>
+                    <span class="timer-label">天</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-item">
+                    <span id="hours" class="timer-number">00</span>
+                    <span class="timer-label">时</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-item">
+                    <span id="minutes" class="timer-number">00</span>
+                    <span class="timer-label">分</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-item">
+                    <span id="seconds" class="timer-number">00</span>
+                    <span class="timer-label">秒</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 祝福语模块 -->
+        <div class="wishes">
+            <div class="wish-card">
+                <h3 class="wish-title">🌟 新年祝福 🌟</h3>
+                <p id="wishContent" class="wish-content">
+                    愿新的一年里，<br>
+                    幸福快乐常伴您左右，<br>
+                    事业有成步步高升，<br>
+                    身体健康万事如意！<br>
+                    <strong>元旦快乐！</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- 互动按钮区域 -->
+        <div class="interaction-buttons">
+            <!-- 粒子效果容器 -->
+            <div id="particles-container" class="particles-container"></div>
+            <button id="changeWishBtn" class="interact-btn btn-primary">
+                <span class="btn-icon">✨</span> 更换祝福
+            </button>
+            <button id="sendWishBtn" class="interact-btn btn-secondary">
+                <span class="btn-icon">💌</span> 发送祝福
+            </button>
+            <button id="shareBtn" class="interact-btn btn-tertiary">
+                <span class="btn-icon">📤</span> 分享网页
+            </button>
+            <button id="effectBtn" class="interact-btn btn-quaternary">
+                <span class="btn-icon">🎨</span> 切换特效
+            </button>
+            <button id="confettiBtn" class="interact-btn btn-confetti">
+                <span class="btn-icon">🎊</span> 开启礼花
+            </button>
+            <button id="countWishBtn" class="interact-btn btn-wish-counter">
+                <span class="btn-icon">❤️</span> 累计祝福
+                <span id="wishCounter" class="wish-counter">0</span>
+                <span id="comboCounter" class="combo-counter">x1</span>
+            </button>
+            <button id="leaderboardBtn" class="interact-btn btn-tertiary">
+                <span class="btn-icon">🏆</span> 排行榜
+            </button>
+        </div>
+
+        <!-- 气球装饰 -->
+        <div class="balloons">
+            <div class="balloon balloon-red"></div>
+            <div class="balloon balloon-blue"></div>
+            <div class="balloon balloon-green"></div>
+            <div class="balloon balloon-yellow"></div>
+            <div class="balloon balloon-purple"></div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>© 2025 元旦祝福网页 | Happy New Year!</p>
+        </footer>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
