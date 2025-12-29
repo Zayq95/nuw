@@ -1,0 +1,1212 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important; /* 隐藏默认鼠标指针 */
+}
+
+/* 自定义元旦主题鼠标指针 - 精致红灯笼 */
+.custom-cursor {
+    position: fixed;
+    width: 50px;
+    height: 65px;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+        linear-gradient(180deg, #ff4757 0%, #c41300 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    box-shadow: 
+        0 0 25px rgba(255, 71, 87, 0.9),
+        inset 0 0 15px rgba(255, 255, 255, 0.4),
+        inset 0 -10px 20px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    animation: sway 2s ease-in-out infinite;
+}
+
+/* 红灯笼的摇摆动画 */
+@keyframes sway {
+    0%, 100% { transform: translate(-50%, -50%) rotate(-2deg); }
+    50% { transform: translate(-50%, -50%) rotate(2deg); }
+}
+
+/* 红灯笼的顶部装饰 */
+.custom-cursor::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 20px;
+    background: linear-gradient(180deg, #ffd93d 0%, #ffb347 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 217, 61, 0.6);
+}
+
+/* 红灯笼的底部装饰 */
+.custom-cursor::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 20px;
+    background: linear-gradient(180deg, #ffd93d 0%, #ff6348 100%);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 0 10px rgba(255, 99, 72, 0.6);
+}
+
+/* 红灯笼上的金色装饰线条 */
+.custom-cursor {
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+        linear-gradient(180deg, #ff4757 0%, #c41300 100%),
+        linear-gradient(90deg, transparent 45%, rgba(255, 217, 61, 0.3) 48%, rgba(255, 217, 61, 0.3) 52%, transparent 55%),
+        linear-gradient(180deg, transparent 35%, rgba(255, 217, 61, 0.3) 38%, rgba(255, 217, 61, 0.3) 42%, transparent 45%),
+        linear-gradient(180deg, transparent 55%, rgba(255, 217, 61, 0.3) 58%, rgba(255, 217, 61, 0.3) 62%, transparent 65%);
+}
+
+/* 红灯笼上的福字 */
+.custom-cursor span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffd93d;
+    font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 217, 61, 0.8);
+    z-index: 10000;
+}
+
+/* 红灯笼的边缘装饰 */
+.custom-cursor {
+    border: 2px solid rgba(255, 217, 61, 0.6);
+}
+
+/* 指针旋转动画 */
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 点击时的缩放效果 */
+.custom-cursor.click {
+    transform: translate(-50%, -50%) scale(1.3);
+    background: radial-gradient(circle, #ff6b6b 0%, #ffd93d 100%);
+}
+
+/* 悬停在可点击元素上时的效果 */
+.custom-cursor.hover {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #4ecdc4 0%, #45b7d1 100%);
+}
+
+/* 触摸设备上隐藏自定义指针 */
+@media (hover: none) and (pointer: coarse) {
+    .custom-cursor {
+        display: none;
+    }
+}
+
+/* 背景和基础样式 */
+body {
+    font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 背景渐变动画 */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 雪花容器 */
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* 雪花样式 */
+.snowflake {
+    position: absolute;
+    color: #fff;
+    font-size: 1em;
+    user-select: none;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: fall linear infinite;
+}
+
+/* 雪花下落动画 */
+@keyframes fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 音乐控制按钮 */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.music-icon {
+    font-size: 24px;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 主容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* 确保所有元素都使用box-sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+    /* 增加触摸目标大小 */
+    .interact-btn,
+    .music-control,
+    .timer-item {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    /* 改进触摸反馈 */
+    .interact-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+    
+    /* 优化滚动体验 */
+    html {
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+    
+    /* 移除悬停效果（触摸设备不适用） */
+    .timer-item:hover,
+    .wish-card:hover {
+        transform: none;
+    }
+    
+    /* 触摸悬停效果 */
+    .timer-item.touch-hover {
+        transform: scale(1.05) translateY(-5px);
+        transition: transform 0.2s ease;
+    }
+    
+    .wish-card.touch-hover {
+        transform: scale(1.02) rotateY(3deg);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+    }
+    
+    /* 进一步优化移动设备性能 */
+    #snow-container .snowflake {
+        animation-duration: 15s;
+    }
+    
+    /* 减少动画效果复杂度 */
+    .particle {
+        animation: none;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    }
+    
+    /* 减少礼花效果数量 */
+    .confetti {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* 页面标题 */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 60px;
+}
+
+.title {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 弹跳动画 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 倒计时模块 */
+.countdown {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.countdown-title {
+    font-size: 1.8rem;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.timer-item {
+    background-color: #4ecdc4;
+    color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 100px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.timer-item:hover {
+    transform: scale(1.1);
+}
+
+.timer-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.timer-label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.timer-separator {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    margin: 0 5px;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+}
+
+/* 祝福语模块 */
+.wishes {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.wish-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.wish-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 400% 400%;
+    animation: gradientBG 5s ease infinite;
+}
+
+.wish-title {
+    font-size: 2rem;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.wish-content {
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #555;
+    text-align: center;
+}
+
+.wish-content strong {
+    color: #ff6b6b;
+    font-size: 1.5rem;
+}
+
+/* 气球容器 */
+.balloons {
+    position: fixed;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 0;
+}
+
+/* 气球样式 */
+.balloon {
+    width: 80px;
+    height: 100px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 50px;
+    background-color: #333;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border: 3px solid #333;
+    border-radius: 50% 0 50% 50%;
+}
+
+/* 不同颜色气球 */
+.balloon-red { background-color: #ff6b6b; animation-delay: 0s; }
+.balloon-blue { background-color: #45b7d1; animation-delay: 1s; }
+.balloon-green { background-color: #96ceb4; animation-delay: 2s; }
+.balloon-yellow { background-color: #ffeaa7; animation-delay: 3s; }
+.balloon-purple { background-color: #a29bfe; animation-delay: 4s; }
+
+/* 气球浮动动画 */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-20px) translateX(10px) rotate(5deg);
+    }
+    50% {
+        transform: translateY(-40px) translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-20px) translateX(-10px) rotate(-5deg);
+    }
+}
+
+/* 互动按钮区域 */
+.interaction-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+    padding: 20px;
+}
+
+/* 互动按钮基础样式 */
+.interact-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.interact-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.interact-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+}
+
+/* 按钮颜色变体 */
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #4ecdc4, #26de81);
+}
+
+.btn-tertiary {
+    background: linear-gradient(135deg, #45b7d1, #3867d6);
+}
+
+.btn-quaternary {
+    background: linear-gradient(135deg, #96ceb4, #ff9ff3);
+}
+
+.btn-confetti {
+    background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    color: #2d3436;
+}
+
+.btn-wish-counter {
+    background: linear-gradient(135deg, #ff7675, #fd79a8);
+}
+
+.wish-counter {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    min-width: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 粒子效果容器 */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* 粒子样式 */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: particle-animation 1s ease-out forwards;
+}
+
+/* 粒子动画 */
+@keyframes particle-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-50px);
+    }
+}
+
+/* 高级按钮效果：脉冲动画 */
+.btn-wish-counter {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-wish-counter::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-wish-counter:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* 进度环容器 */
+.progress-container {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+}
+
+/* 进度环样式 */
+.progress-ring {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+
+.progress-ring-circle {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 4;
+    stroke-dasharray: 113;
+    stroke-dashoffset: 113;
+    transition: stroke-dashoffset 0.5s ease;
+    stroke-linecap: round;
+}
+
+/* 连击计数器 */
+.combo-counter {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #2d3436;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
+}
+
+.combo-counter.show {
+    opacity: 1;
+    bottom: -25px;
+}
+
+/* 3D按钮效果 */
+.btn-wish-counter {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.btn-wish-counter:hover {
+    transform: translateY(-5px) scale(1.08) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+}
+
+.btn-wish-counter:active {
+    transform: translateY(0) scale(0.98) rotateX(0) rotateY(0);
+    animation: buttonPress 0.2s ease-in-out;
+}
+
+@keyframes buttonPress {
+    0% {
+        transform: translateY(-3px) scale(1.02) rotateX(5deg) rotateY(5deg);
+    }
+    50% {
+        transform: translateY(0) scale(0.96) rotateX(0) rotateY(0);
+    }
+    100% {
+        transform: translateY(0) scale(0.98) rotateX(0) rotateY(0);
+    }
+}
+
+/* 按钮悬停时的光晕效果 */
+.btn-wish-counter:hover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    animation: shine 1.5s infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes shine {
+    0%, 100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+}
+
+/* 动态背景效果 */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.btn-wish-counter {
+    background: linear-gradient(-45deg, #ff6b6b, #fd79a8, #a29bfe, #6c5ce7);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* 高级粒子效果 */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    animation: particle-animation 1s ease-out forwards;
+}
+
+@keyframes particle-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-80px) rotate(360deg);
+    }
+}
+
+/* 更高级的粒子爆炸效果 */
+.particle.explosion {
+    animation: particle-explosion 1.2s ease-out forwards;
+}
+
+@keyframes particle-explosion {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.5) translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.2) translateY(-100px);
+    }
+}
+
+/* 成就徽章 */
+.achievement-badge {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: linear-gradient(135deg, #ffd93d, #ff6b6b);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 217, 61, 0.5);
+    z-index: 1000;
+    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.achievement-badge.show {
+    right: 20px;
+    animation: achievementSlide 0.6s ease-out;
+}
+
+@keyframes achievementSlide {
+    0% {
+        right: -300px;
+        transform: scale(0.5);
+    }
+    70% {
+        right: 30px;
+        transform: scale(1.1);
+    }
+    100% {
+        right: 20px;
+        transform: scale(1);
+    }
+}
+
+.achievement-icon {
+    font-size: 24px;
+    animation: bounce 1s infinite;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 排行榜容器 */
+.leaderboard-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    display: none;
+    min-width: 300px;
+    backdrop-filter: blur(10px);
+}
+
+.leaderboard-container.show {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.leaderboard-title {
+    color: #2d3436;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.leaderboard-rank {
+    color: #ff6b6b;
+    font-size: 1.2rem;
+}
+
+/* 连击特效动画 */
+@keyframes comboPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+}
+
+/* 浮动数字效果 */
+.floating-number {
+    font-family: 'Arial', sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    30% {
+        opacity: 1;
+        transform: translate(-50%, -80%) scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -150px) scale(1);
+    }
+}
+
+/* 屏幕震动效果 */
+@keyframes screenShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) translateY(-5px); }
+    50% { transform: translateX(5px) translateY(5px); }
+    75% { transform: translateX(-5px) translateY(5px); }
+    100% { transform: translateX(5px) translateY(-5px); }
+}
+
+.screen-shake {
+    animation: screenShake 0.2s ease-in-out;
+}
+
+/* 连击按钮特效 */
+.combo-effect {
+    animation: comboPulse 0.3s ease-in-out;
+}
+
+.combo-counter.pulse {
+    animation: comboPulse 0.3s ease-in-out;
+}
+
+/* 按钮动画效果 */
+.interact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.interact-btn:hover::before {
+    transform: translateX(100%);
+}
+
+/* 礼花容器 */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff6b6b;
+    opacity: 0.8;
+    animation: confetti-fall linear infinite;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 页脚 */
+.footer {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 响应式设计 */
+/* 平板设备优化 (768px - 1024px) */
+@media (max-width: 1024px) {
+    .title {
+        font-size: 3.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .header {
+        padding-top: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .wish-card {
+        max-width: 80%;
+        padding: 30px;
+    }
+    
+    .interact-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* 小平板和大屏手机优化 (481px - 768px) */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .timer-item {
+        min-width: 75px;
+        padding: 12px;
+        margin: 5px;
+    }
+    
+    .timer-number {
+        font-size: 1.8rem;
+    }
+    
+    .timer-label {
+        font-size: 0.9rem;
+    }
+    
+    .wish-title {
+        font-size: 1.6rem;
+    }
+    
+    .wish-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    .wish-card {
+        max-width: 90%;
+        padding: 25px;
+    }
+    
+    .interact-btn {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .interaction-buttons {
+        gap: 10px;
+    }
+    
+    .balloon {
+        width: 60px;
+        height: 80px;
+    }
+    
+    /* 调整雪花数量以提高性能 */
+    #snow-container .snowflake {
+        font-size: 0.9em;
+    }
+}
+
+/* 手机设备优化 (<= 480px) */
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .header {
+        padding-top: 30px;
+        margin-bottom: 20px;
+    }
+    
+    .timer-item {
+        min-width: 60px;
+        padding: 10px;
+        margin: 3px;
+    }
+    
+    .timer-number {
+        font-size: 1.5rem;
+    }
+    
+    .timer-label {
+        font-size: 0.8rem;
+    }
+    
+    .wish-title {
+        font-size: 1.4rem;
+    }
+    
+    .wish-content {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .wish-card {
+        max-width: 95%;
+        padding: 20px;
+    }
+    
+    .interaction-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .interact-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+        width: 80%;
+        justify-content: center;
+    }
+    
+    .balloon {
+        width: 50px;
+        height: 70px;
+    }
+    
+    /* 进一步减少雪花数量以提高性能 */
+    #snow-container .snowflake {
+        font-size: 0.8em;
+    }
+    
+    /* 调整音乐控制按钮位置 */
+    .music-control {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* 调整粒子效果 */
+    .particle {
+        width: 4px;
+        height: 4px;
+    }
+}
